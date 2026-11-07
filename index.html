@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>핑 한국어 문법 카드 (9:16)</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+TC:wght@300;400&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --kraft: #c9a783;
+    --purple: #7d4a77;
+    --blue: #5a93b1;
+    --ink: #1d1d1d;
+    --marker: #2b3a8f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 24px 64px;
+    background: #d9d4cc;
+    font-family: 'Gaegu', 'Comic Sans MS', 'Segoe Print', cursive;
+    color: var(--ink);
+  }
+  h1 { text-align: center; font-size: 26px; margin: 0 0 8px; }
+  .sub {
+    text-align: center; font-size: 15px; color: #555; margin-bottom: 24px;
+    font-family: 'Noto Sans TC', sans-serif; font-weight: 300;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 28px;
+    justify-items: center;
+  }
+
+  /* 9:16 card */
+  .card {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    background: var(--kraft);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  }
+  .card::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(160deg, transparent 0 22%, var(--purple) 22% 52%, transparent 52%),
+      linear-gradient(200deg, transparent 0 28%, var(--blue) 28% 60%, transparent 60%),
+      linear-gradient(20deg, transparent 0 70%, var(--purple) 70% 100%);
+    opacity: .95;
+  }
+  .card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px) 0 0 / 4px 4px;
+  }
+
+  .paper {
+    position: absolute;
+    left: 14px; right: 14px; top: 34px; bottom: 22px;
+    background: #f4f3ef;
+    padding: 22px 16px 10px;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    display: flex; flex-direction: column;
+  }
+  .col { display: contents; }
+  .tape {
+    position: absolute;
+    left: 50%; top: 14px;
+    transform: translateX(-50%) rotate(-1.5deg);
+    width: 120px; height: 26px;
+    background: #111; opacity: .9; z-index: 3;
+    clip-path: polygon(3% 0, 100% 8%, 97% 100%, 0 90%);
+  }
+  .qmark {
+    position: absolute; right: 10px; top: 46px;
+    font-size: 46px; color: var(--marker);
+    transform: rotate(8deg); z-index: 3; font-weight: 700;
+  }
+  .num {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px; text-align: left; letter-spacing: 1px; margin-bottom: 5px;
+  }
+  .gtitle {
+    font-family: '이랑체', 'Gaegu', cursive;
+    font-size: 22px; font-weight: 700; text-align: left; line-height: 1.2; margin: 0 0 4px; padding-right: 34px;
+  }
+  .gram {
+    font-family: 'Noto Sans TC', sans-serif; font-weight: 300;
+    font-size: 12px; line-height: 1.3; color: #333; text-align: left; margin-bottom: 2px;
+  }
+  .gsub {
+    font-family: 'Noto Sans TC', sans-serif; font-weight: 300;
+    font-size: 11px; text-align: left; color: #4a4a4a; margin-bottom: 10px;
+  }
+
+  /* hand-drawn box */
+  .box {
+    position: relative;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 255px 14px 225px 16px / 16px 225px 14px 255px;
+    padding: 8px 10px 7px;
+    transform: rotate(-.6deg);
+    text-align: left;
+  }
+  .line {
+    font-family: 'Gaegu', cursive;
+    font-size: 21px; font-weight: 700; line-height: 1.3;
+  }
+  .zhline {
+    font-family: 'Zen Maru Gothic', 'Noto Sans TC', sans-serif;
+    font-size: 14px; line-height: 1.4;
+    color: #3b2a4f;
+    margin-top: 5px;
+  }
+  .pron {
+    font-size: 14px; text-align: left; color: #6a2e6a;
+    margin: 5px 0 8px; letter-spacing: .3px; line-height: 1.35;
+  }
+
+  /* explanation with hanging indent */
+  .sec {
+    font-size: 13px; line-height: 1.4; margin: 3px 0;
+    padding-left: 42px; text-indent: -42px;
+  }
+  .sec b {
+    display: inline-block; width: 42px; text-indent: 0;
+    color: var(--marker); font-weight: 700;
+  }
+  .zh-exp { font-family: 'Noto Sans TC', sans-serif; }
+  .ko-exp { font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif; }
+
+  /* more examples */
+  .exlabel {
+    font-size: 12px; color: var(--marker); font-weight: 700; margin-top: 6px;
+    font-family: 'Gaegu', cursive;
+  }
+  .ex {
+    font-size: 12px; line-height: 1.3; margin: 3px 0 0;
+  }
+  .ex .exko {
+    font-family: 'Gaegu', cursive; font-size: 13px; font-weight: 700;
+  }
+  .ex .expron { color: #6a2e6a; font-size: 11px; margin-left: 3px; }
+  .ex .exzh {
+    display: block; font-family: 'Noto Sans TC', sans-serif;
+    font-size: 10.5px; font-weight: 300; color: #333;
+  }
+
+  /* 為什麼 block */
+  .why {
+    margin-top: auto;
+    border-top: 1px dashed #888;
+    padding-top: 5px;
+    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    font-weight: 300;
+    font-size: 10.5px;
+    line-height: 1.3;
+    color: #222;
+  }
+  .why .lbl { font-weight: 400; color: #a33; margin-right: 4px; }
+  .why .zh { display: block; margin-top: 2px; }
+
+  /* ---- site layout: index of lessons + one lesson at a time ---- */
+  body:not(.view-card) .grid { display: none; }
+  body.view-card .grid { display: flex; justify-content: center; }
+  body.view-card .index { display: none; }
+  body.view-card h1, body.view-card .sub { display: none; }
+  .index {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px; max-width: 1000px; margin: 0 auto;
+  }
+  .tile {
+    display: block; text-decoration: none; color: var(--ink);
+    background: #fff; border: 2px solid var(--ink); padding: 12px 14px;
+    box-shadow: 0 3px 8px rgba(0,0,0,.15);
+  }
+  .tile:hover { background: #fff9d6; }
+  .tnum { display: block; font-family: 'Press Start 2P', monospace; font-size: 10px; margin-bottom: 6px; }
+  .ttitle { display: block; font-family: 'Gaegu', cursive; font-size: 20px; font-weight: 700; line-height: 1.2; }
+  .tsub { display: block; font-size: 12px; color: #555; margin-top: 4px; font-family: 'Noto Sans TC', sans-serif; }
+  .nav { display: flex; justify-content: center; gap: 14px; margin: 0 0 14px; font-family: 'Gaegu', cursive; font-size: 20px; font-weight: 700; }
+  body:not(.view-card) .nav { display: none; }
+  .nav a { color: var(--marker); text-decoration: none; padding: 2px 8px; background: #fff; border: 2px solid var(--ink); }
+  .nav a:hover { background: #fff9d6; }
+
+
+  /* message bar for errors */
+  .toast {
+    position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%);
+    background: #222; color: #fff; padding: 10px 16px; border-radius: 8px;
+    font-family: 'Noto Sans TC', sans-serif; font-size: 14px; max-width: 90vw;
+    opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<h1>핑 한국어 문법 카드 · 기본 어법 순서</h1>
+<div class="sub">9/3 ~ 11/6 회차 · 기본 조사·문장 → 활용 → 부정·연결 → 관형형 → 추측·복합 순</div>
+<div class="index" id="index"></div>
+<div class="nav" id="nav"></div>
+<div class="grid" id="grid"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// Chinese grammar name shown under each card title (index = lesson number - 1)
+const CN = ["名詞＋是（이에요／예요）", "受詞助詞（目的格）", "「和…」的口語說法（-랑）", "韓語語序：動詞在句尾、主詞常省略", "過去式（-았／었／했어요）", "ㅂ 不規則形容詞", "으 脫落（예쁘다 → 예뻐요）", "過去的喜好", "닮다 與 비슷하다 的差異", "否定：안（自己不做）與 못（做不到）", "連接動作：先…再…（-고）", "假設的擔心（-(으)면 어떡해요?）", "因為…所以（-어서／아서）", "但是（逆接 -지만）", "動詞修飾名詞：現在・習慣（-는）", "…的時候（-(으)ㄹ 때）", "修飾名詞：未來・需要（-(으)ㄹ）", "不敢…（-기 무섭다）", "推測・感嘆（-겠-）", "出去再回來（갔다 올게）", "間接引用（-다고／-라고 했어요）"];
+
+const cards = [
+  {
+    title: "이에요 / 예요", sub: "名詞敘述 ・ 9/17 · 10/30 · 11/5",
+    line: "저는 대만 사람이에요.", zh: "我是台灣人。", pron: "[저는 대만 사라미에요]",
+    expl: "接在名詞後面，表示「是～」的敘述語尾。",
+    ko: "명사 뒤에서 ‘이다’의 활용형으로 쓰여요.",
+    why: "名詞最後一個字有收音（사람 ㅁ）加이에요；沒有收音（간호사）加예요。<span class='zh'>간호사예요（沒有收音）、사람이에요（有收音）。</span>",
+    ex: [
+      ["저는 학생이에요.", "[저는 학쌩이에요]", "我是學生。"],
+      ["이거 제 거예요.", "[이거 제 거예요]", "這是我的。"],
+      ["이 사람은 누구예요?", "[이 사라므 누구예요]", "這個人是誰？"]
+    ]
+  },
+  {
+    title: "을 / 를 （目的格）", sub: "賓語標記 ・ 9/17",
+    line: "딸이 안친반을 안 좋아해요.", zh: "女兒不喜歡安親班。", pron: "[따리 안친바늘 안 조아해요]",
+    expl: "接在動作對象（受詞）的名詞後面，標示賓語。",
+    ko: "동작의 대상이 되는 명사 뒤에 붙어요.",
+    why: "받침 있으면 을，없으면 를。<span class='zh'>안친반（ㄴ 收音）→ 을；공부（沒有收音）→ 를（공부를）。</span>",
+    ex: [
+      ["커피를 마셔요.", "[커피를 마셔요]", "喝咖啡。"],
+      ["물을 주세요.", "[무를 주세요]", "請給我水。"],
+      ["친구를 만나요.", "[친구를 만나요]", "跟朋友見面。"]
+    ]
+  },
+  {
+    title: "-(이)랑 （和…）", sub: "口語的 與・和 ・ 10/22 · 10/30",
+    line: "아빠랑 딸이랑 비슷해요.", zh: "爸爸和女兒很像。", pron: "[아빠랑 딸이랑 비스태요]",
+    expl: "「和…」的口語說法，相當於「와/과」，用來連接兩個對象。",
+    ko: "‘와/과’의 구어체로, 두 대상을 이을 때 써요.",
+    why: "沒有收音 → 랑（아빠랑）；有收音 → 이랑（딸이랑）。",
+    ex: [
+      ["친구랑 같이 가요.", "[친구랑 같이 가요]", "跟朋友一起去。"],
+      ["엄마랑 영화 봤어요.", "[엄마랑 영화 봐써요]", "我跟媽媽看了電影。"],
+      ["밥이랑 국 주세요.", "[바비랑 국 주세요]", "請給我飯和湯。"]
+    ]
+  },
+  {
+    title: "SOV 語序 ・ 주어 생략", sub: "韓語動詞在句尾 ・ 9/3 · 10/13 · 10/22",
+    line: "밥 먹었어요?", zh: "吃飯了嗎？", pron: "[밤 머거써요?]",
+    expl: "動詞放在句尾，主詞常常省略。",
+    ko: "동사는 문장 맨 끝에 오고, 주어는 자주 생략해요.",
+    why: "韓文是主語-賓語-動詞（SOV），和中文（SVO）不同。<span class='zh'>所以要聽到句尾，才知道是現在還是過去。</span>",
+    ex: [
+      ["뭐 먹을래요?", "[뭐 머글래요?]", "你要吃什麼？"],
+      ["이거 얼마예요?", "[이거 얼마예요]", "這個多少錢？"],
+      ["한국어 공부해요.", "[한구거 공부해요]", "我在學韓語。"]
+    ]
+  },
+  {
+    title: "과거형 -았/었/했어요", sub: "過去式 ・ 9/3 · 10/22",
+    line: "신발 샀어요.", zh: "我買了鞋子。", pron: "[신발 사써요]",
+    expl: "表示已經完成的事，在語幹後面接 -았/었/했-。",
+    ko: "이미 끝난 일을 말할 때 어간에 -았/었/했-을 붙여요.",
+    why: "語幹最後母音是ㅏ・ㅗ → 았；其他 → 었；하다 → 했어요。<span class='zh'>사+았 → 샀어요。</span>",
+    ex: [
+      ["어제 뭐 했어요?", "[어제 뭐 해써요]", "昨天做了什麼？"],
+      ["주말에 영화를 봤어요.", "[주마레 영화를 봐써요]", "週末看了電影。"],
+      ["이거 진짜 맛있었어요.", "[이거 진짜 마시써써요]", "這個真的很好吃。"]
+    ]
+  },
+  {
+    title: "ㅂ 불규칙 형용사", sub: "ㅂ不規則形容詞 ・ 10/22",
+    line: "너무 무서워요.", zh: "好可怕。太可怕了。", pron: "[너무 무서워요]",
+    expl: "語幹有ㅂ收音的形容詞，ㅂ 要變成「우」再接어요。",
+    ko: "ㅂ 받침을 빼고 ‘우’를 넣은 뒤 어요를 붙여요.",
+    why: "무섭다 → 무서우+어요 → 무서워요。<span class='zh'>비슷하다是規則活用（비슷해요），不是ㅂ不規則。</span>",
+    ex: [
+      ["날씨가 추워요.", "[날씨가 추워요]", "天氣很冷。"],
+      ["오늘 너무 더워요.", "[오느른 너무 더워요]", "今天好熱。"],
+      ["떡볶이가 매워요.", "[떡뽀끼가 매워요]", "辣炒年糕很辣。"]
+    ]
+  },
+  {
+    title: "예쁘다 → 예뻐요", sub: "으 탈락 ・ 10/22",
+    line: "너무 예뻐요.", zh: "好漂亮。太漂亮了。", pron: "[너무 예뻐요]",
+    expl: "語幹最後是ㅡ母音，接어요時ㅡ會脫落，前面的音節直接接ㅓ。",
+    ko: "‘쁘’의 ㅡ가 빠지고 ㅓ가 붙어요. 슬프다 → 슬퍼요, 기쁘다 → 기뻐요도 같아요.",
+    why: "예쁘+어 → 예뻐。<span class='zh'>「으」脫落：예쁘＋어 → 예뻐。語幹的 ㅡ 在後面接 ㅓ 時被省略，只留下 ㅓ 接在前一個音節上。</span>",
+    ex: [
+      ["오늘 바빠요.", "[오늘 바빠요]", "今天很忙。"],
+      ["머리가 아파요.", "[머리가 아파요]", "頭痛。"],
+      ["기분이 나빠요.", "[기부니 나빠요]", "心情不好。"]
+    ]
+  },
+  {
+    title: "과거형 + 좋아했어요", sub: "過去的喜好 ・ 9/3 · 10/22",
+    line: "딸은 뭐 제일 좋아했어요?", zh: "女兒最喜歡什麼？", pron: "[따른 뭐 제일 조아해써요?]",
+    expl: "描述過去喜歡的東西或人；現在式用 좋아해요。",
+    ko: "과거에 좋아했던 것을 물을 때 써요. 지금도 좋아해요 = 현재.",
+    why: "좋아하다 → 좋아했다 → 좋아했어요（하다 → 했어요）。",
+    ex: [
+      ["저는 커피 좋아해요.", "[저는 커피 조아해요]", "我喜歡咖啡。"],
+      ["예전에 이 노래 좋아했어요.", "[예저네 이 노래 조아해써요]", "以前很喜歡這首歌。"],
+      ["그 사람 좋아했어요.", "[그 사람 조아해써요]", "我以前喜歡過那個人。"]
+    ]
+  },
+  {
+    title: "닮다 vs 비슷하다", sub: "長得像 vs 相似 ・ 10/22",
+    line: "아빠를 닮았어요.", zh: "長得像爸爸。", pron: "[아빠를 달마써요]",
+    expl: "닮다多用於外貌、個性相像；비슷하다用於整體相似。",
+    ko: "닮다는 외모·성격이 비슷할 때, 비슷하다는 전반적으로 비슷할 때 써요.",
+    why: "닮다 + 았어요 = 닮았어요（ㅏ 母音後面用 았）。<span class='zh'>發音 [달마써요] 要整句一起記。</span>",
+    ex: [
+      ["엄마를 닮았어요.", "[엄마를 달마써요]", "長得像媽媽。"],
+      ["누구를 닮았어요?", "[누구를 달마써요?]", "你長得像誰？"],
+      ["두 사람이 비슷해요.", "[두 사라미 비스태요]", "兩個人很像。"]
+    ]
+  },
+  {
+    title: "안 vs 못", sub: "否定 ・ 11/6",
+    line: "운동 못 해요.<br>운동 안 해요.", zh: "不能做運動 ／ 不做運動（自己選擇）。", pron: "[운동 모태요 / 운동 안 해요]",
+    expl: "안＝自己選擇不做；못＝情況上做不到。兩者都放在하다前面。",
+    ko: "안 = 스스로 안 함, 못 = 상황상 할 수 없음. 둘 다 하다 앞에 놓아요.",
+    why: "운동 안 해요（O）／ 안 운동 해요（X）。<span class='zh'>複合動詞（운동하다）的名詞和하다之間插入。</span>",
+    ex: [
+      ["오늘은 못 가요.", "[오느른 몯 까요]", "今天去不了。"],
+      ["저는 술 안 마셔요.", "[저는 술 안 마셔요]", "我不喝酒。"],
+      ["한국어 못 해요.", "[한구거 모태요]", "我不會說韓語。"]
+    ]
+  },
+  {
+    title: "동사 + -고 （先…再…）", sub: "動作的連接 ・ 11/6",
+    line: "TV 보고<br>씻을게요.", zh: "先看電視，再去洗澡。", pron: "[티비 보고 씨슬께요]",
+    expl: "依序連接兩個動作，前面的動詞加 -고。",
+    ko: "두 동작을 순서대로 이을 때 앞 동사에 -고를 붙여요.",
+    why: "和「그리고（然後）」意思類似，但口語中直接接在動詞後面更自然。",
+    ex: [
+      ["밥 먹고 갈게요.", "[밤 먹꼬 갈께요]", "吃完飯再走。"],
+      ["얘기하고 싶어요.", "[얘기하고 시퍼요]", "想聊聊。"],
+      ["씻고 잘게요.", "[씯꼬 잘께요]", "洗完澡就睡。"]
+    ]
+  },
+  {
+    title: "-(으)면 어떡해요?", sub: "假設的擔心 ・ 9/17",
+    line: "안 먹으면<br>어떡해요?", zh: "如果不吃怎麼辦？", pron: "[안 머그면 어떠캐요?]",
+    expl: "假設一個擔心的情況時使用。",
+    ko: "걱정되는 상황을 가정할 때 써요.",
+    why: "沒有收音 → -면（가면），有收音 → -으면（먹으면），ㄹ 收音 → -면（울면）。<span class='zh'>어떡해요 = 怎麼辦。</span>",
+    ex: [
+      ["지금 가면 어떡해요?", "[지금 가면 어떠캐요]", "現在去的話怎麼辦？"],
+      ["비 오면 어떡해요?", "[비 오면 어떠캐요]", "下雨怎麼辦？"],
+      ["늦으면 어떡해요?", "[느즈면 어떠캐요]", "遲到怎麼辦？"]
+    ]
+  },
+  {
+    title: "-어서/아서 （因為…所以）", sub: "原因・理由 ・ 11/5",
+    line: "엄마가 보고 싶어서<br>왔어요.", zh: "因為想念媽媽，所以來了。", pron: "[엄마가 보고 시퍼서 와써요]",
+    expl: "前面的感情或狀態，成為後面行動的原因。",
+    ko: "앞 동사·형용사의 감정이나 상태가 뒤 행동의 이유가 돼요.",
+    why: "보고 싶다 + 어서 → 싶어서。<span class='zh'>ㅏ・ㅗ → 아서，其他 → 어서（왔어요 = 오+았어요）。</span>",
+    ex: [
+      ["배고파서 먹었어요.", "[배고파서 머거써요]", "因為餓，所以吃了。"],
+      ["날씨가 좋아서 산책했어요.", "[날씨가 조아서 산채캐써요]", "天氣好，所以去散步了。"],
+      ["드라마 재미있어서 봤어요.", "[드라마 재미이써서 봐써요]", "因為戲劇好看，所以看了。"]
+    ]
+  },
+  {
+    title: "-지만 （但是）", sub: "逆接連接 ・ 11/5",
+    line: "우리는 엄마지만<br>나만의 시간이 필요해요.", zh: "雖然我們是媽媽，但需要屬於自己的時間。", pron: "[우리는 엄마지만 나만에 시가니 피료해요]",
+    expl: "連接兩個相反的內容，相當於「但是」。",
+    ko: "앞뒤 내용이 대조될 때 써요. 그렇지만 = 하지만.",
+    why: "語幹 + -지만；名詞 + 지만（엄마지만）。<span class='zh'>連接兩個相反的內容，等於「但是」。</span>",
+    ex: [
+      ["비싸지만 맛있어요.", "[비싸지만 마시써요]", "雖然貴，但很好吃。"],
+      ["피곤하지만 행복해요.", "[피고나지만 행보캐요]", "雖然很累，但很幸福。"],
+      ["괜찮지만 조금 힘들어요.", "[괜찬치만 조금 힘드러요]", "雖然還好，但有點累。"]
+    ]
+  },
+  {
+    title: "동사 + -는 + 명사", sub: "現在・反覆的關形詞 ・ 11/5",
+    line: "남편이랑 아이스크림<br>먹는 시간이 좋아요.", zh: "喜歡跟老公一起吃冰淇淋的時間。", pron: "[남펴니랑 아이스크림 멍는 시가니 조아요]",
+    expl: "動詞修飾後面的名詞時用 -는，表示現在正在進行或平常習慣的事。",
+    ko: "동사를 명사 앞에서 꾸밀 때 -는을 붙여요. 지금 하는 일이나 습관적인 일에 써요.",
+    why: "먹다 → 먹는（不論收音都加 -는）。<span class='zh'>發音 [멍는]（ㄱ → ㅇ 鼻音化）。「反覆」不是唯一條件，지금 먹는 음식（現在正在吃的）也用 -는。</span>",
+    ex: [
+      ["제가 좋아하는 음식이에요.", "[제가 조아하는 음시기에요]", "這是我喜歡的食物。"],
+      ["자주 쓰는 표현이에요.", "[자주 쓰는 표현이에요]", "這是常用的表達。"],
+      ["매일 먹는 음식이에요.", "[매일 멍는 음시기에요]", "這是每天吃的食物。"]
+    ]
+  },
+  {
+    title: "-(으)ㄹ 때 （…的時候）", sub: "時間・情況 ・ 11/6 · 11/5 · 10/22",
+    line: "남편이랑 싸울 때", zh: "跟老公吵架的時候。", pron: "[남펴니랑 싸울 때]",
+    expl: "接在動詞後面修飾「때」，表示某個狀況或時間點。",
+    ko: "어떤 상황이나 시점을 나타내는 명사 앞 표현이에요.",
+    why: "싸우다 → 싸울 때（沒有收音 → ㄹ）。<span class='zh'>有收音則用 -을 때。</span>",
+    ex: [
+      ["밥 먹을 때 전화하지 마세요.", "[밤 머글 때 전화하지 마세요]", "吃飯的時候請不要打電話。"],
+      ["시간 있을 때 연락하세요.", "[시간 이쓸 때 열라카세요]", "有空的時候請聯絡我。"],
+      ["힘들 때 연락해요.", "[힘들 때 열라캐요]", "辛苦的時候就聯絡我。"]
+    ]
+  },
+  {
+    title: "-(으)ㄹ + 명사 （未來・需要）", sub: "動詞修飾名詞 ・ 9/17",
+    line: "딸을 돌볼 사람이<br>없어요.", zh: "沒有可以照顧女兒的人。", pron: "[따를 돌볼 사라미 업써요]",
+    expl: "修飾未來或還沒發生的事，表示「將要～的」。",
+    ko: "앞으로 할 일을 꾸밀 때 -(으)ㄹ을 써요. 평소 일은 -는.",
+    why: "돌보다 + ㄹ 사람 → 돌볼 사람。<span class='zh'>없어요 發音 [업써요]。</span>",
+    ex: [
+      ["같이 갈 사람 있어요?", "[가치 갈 싸람 이써요]", "有人跟我一起去嗎？"],
+      ["믿을 사람이 없어요.", "[미들 싸라미 업써요]", "沒有可以信任的人。"],
+      ["말할 사람이 없어요.", "[마롤 싸라미 업써요]", "沒有可以說話的人。"]
+    ]
+  },
+  {
+    title: "-기 무섭다 （不敢…）", sub: "名詞化 -기 ・ 11/5",
+    line: "화장실 가기 무서워요.", zh: "不敢去廁所。", pron: "[화장실 가기 무서워요]",
+    expl: "動詞加 -기變成名詞，搭配 무섭다 表示「做～很可怕」。",
+    ko: "동사 기본형 + -기 = ‘~하는 것’. 무섭다와 함께 쓰면 ‘~하기가 무서워요’.",
+    why: "가다 + 기 → 가기（去掉다，加기）。",
+    ex: [
+      ["혼자 자기 무서워요.", "[혼자 자기 무서워요]", "一個人睡覺很可怕。"],
+      ["높은 데 올라가기 무서워요.", "[노픈 데 올라가기 무서워요]", "不敢爬高。"],
+      ["물에 들어가기 무서워요.", "[무레 드러가기 무서워요]", "不敢下水。"]
+    ]
+  },
+  {
+    title: "-겠- （推測・感嘆）", sub: "推測與感嘆 ・ 10/30",
+    line: "아빠는 너무<br>행복하겠다!", zh: "爸爸一定很幸福吧！", pron: "[아빠는 너무 행보카겓따]",
+    expl: "表示推測，或羨慕、感嘆。",
+    ko: "추측이나 부러움·감탄을 나타내요. 너무 좋겠다 = 정말 좋겠네요.",
+    why: "행복하다 + 겠다。<span class='zh'>發音 [행보카겓따]（ㅆ → ㄷ，겠다 的 ㄷ 變成硬音）。</span>",
+    ex: [
+      ["맛있겠다!", "[마시겓따]", "好好吃喔！"],
+      ["피곤하겠다.", "[피고나겓따]", "一定很累吧。"],
+      ["좋겠다!", "[조켇따]", "真好啊！"]
+    ]
+  },
+  {
+    title: "갔다 올게 （去了再回來）", sub: "가다 + 오다 合成 ・ 11/6",
+    line: "나 혼자<br>갔다 올게.", zh: "我自己去一下就回來。", pron: "[나 혼자 갇따 올께]",
+    expl: "出門的人說的固定說法，像中文的「回家」，本身就含有「會再回來」的意思。",
+    ko: "나갈 때 쓰는 관용 표현이에요. 돌아온다는 뜻이 이미 들어 있어서, 따로 돌아온다고 말하지 않아도 돼요.",
+    why: "갔다 올게（出門的人說，已含「會回來」）vs 갔다 왔어요（已經回來了）。<span class='zh'>像中文「回家」，語意已包含「回來」。-ㄹ게 = 未來的意志。</span>",
+    ex: [
+      ["금방 갔다 올게.", "[금방 갇따 올께]", "馬上就回來。"],
+      ["잠깐 갔다 올게요.", "[잠깐 갇따 올께요]", "我去一下就回來。"],
+      ["편의점 갔다 올게.", "[펴니쩜 갇따 올께]", "我去便利商店就回來。"]
+    ]
+  },
+  {
+    title: "-다고 / -라고 했어요 （引用）", sub: "間接引用 ・ 11/6",
+    line: "나 혼자 갔다 올게라고<br>했어요.", zh: "他說「我自己去就回來」。", pron: "[나 혼자 갇따 올께라고 해써요]",
+    expl: "引用別人說的話時，接在那句話後面。",
+    ko: "누군가의 말을 옮길 때 말 뒤에 -라고 했어요를 붙여요.",
+    why: "평서문（괜찮다、온다）→ -다고；명령문（연락하라）→ -라고。<span class='zh'>라고與다고的差別在句型，不在意思：다고 接陳述句，라고 接命令句；청유는 -자고、의문은 -냐고。</span>",
+    ex: [
+      ["괜찮다고 했어요.", "[괜찬타고 해써요]", "他說沒關係。"],
+      ["내일 온다고 했어요.", "[내일 온다고 해써요]", "他說明天來。"],
+      ["회의 끝나면 연락하라고 했어요.", "[회이 끈나면 열라카라고 해써요]", "他叫我開完會就聯絡他。"]
+    ]
+  }
+];
+
+// read the box sentence aloud with the browser's Korean voice
+const grid = document.getElementById('grid');
+cards.forEach((c, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  const exHtml = c.ex.map(([ko, pr, zh]) =>
+    `<div class="ex"><span class="exko">${ko}</span><span class="expron">${pr}</span><span class="exzh">${zh}</span></div>`
+  ).join('');
+  const el = document.createElement('section');
+  el.className = 'card';
+  el.dataset.n = i;
+  el.innerHTML = `
+    <div class="tape"></div><div class="qmark">?</div>
+    <div class="paper">
+      <div class="col col-l">
+        <div class="num">${n}</div>
+        <div class="gtitle">${c.title}</div>
+        <div class="box">
+          <div class="line">${c.line}</div>
+          <div class="zhline">${c.zh}</div>
+        </div>
+        <div class="pron">${c.pron}</div>
+        <div class="sec zh-exp"><b>說明</b>${c.expl}</div>
+        <div class="sec ko-exp"><b>韓語</b>${c.ko}</div>
+      </div>
+      <div class="col col-r">
+        <div class="exlabel">其他例句</div>
+        ${exHtml}
+        <div class="why"><span class="lbl">為什麼？</span>${c.why}</div>
+      </div>
+    </div>`;
+  grid.appendChild(el);
+});
+
+// index of all lessons
+document.getElementById('index').innerHTML = cards.map((c, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  return `<a class="tile" href="#" data-n="${i + 1}"><span class="tnum">${n}</span><span class="ttitle">${c.zh}</span><span class="tsub">${CN[i]}</span></a>`;
+}).join('');
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// show lesson n (1-based); 0 = index. Plain JS, no URL hash, so it works inside previews too.
+function show(n) {
+  const cur = n - 1;
+  const isCard = n >= 1 && n <= cards.length;
+  document.body.classList.toggle('view-card', isCard);
+  document.querySelectorAll('.card').forEach((el, i) => { el.style.display = (isCard && i === cur) ? '' : 'none'; });
+  if (isCard) {
+    document.getElementById('nav').innerHTML =
+      (n > 1 ? `<a href="#" data-n="${n - 1}">← 이전</a>` : '') +
+      `<a href="#" data-n="0">목록</a>` +
+      (n < cards.length ? `<a href="#" data-n="${n + 1}">다음 →</a>` : '');
+  }
+  window.scrollTo(0, 0);
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-n]');
+  if (!a) return;
+  e.preventDefault();
+  show(Number(a.dataset.n));
+});
+show(0);
+</script>
+</body>
+</html>
